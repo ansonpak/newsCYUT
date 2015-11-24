@@ -1,0 +1,31 @@
+{% extends 'main/main.html' %}
+{% block content %}
+{% if latestnews %}
+<h1>{{latestnews.title}}</h1>
+{% if latestnews %}
+<table>
+<tr><th>最新消息正文</th></tr>
+{% for latestnews in latestnewss %}
+<tr>
+<td>
+{{latestnews.content}}
+</td>
+</tr>
+{% endfor %}
+<tr><th>最新消息更新時間</th></tr>
+{% for latestnews in latestnewss %}
+<tr>
+<td>
+{{latestnews.uploadDate}}
+</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p><strong>目前並無最新消息。</strong></p>
+{% endif %}
+{% else %}
+<p>所指定的分類「{{latestnewsID}}」不存在。</p>
+{% endif %}
+<br>
+{% endblock %}

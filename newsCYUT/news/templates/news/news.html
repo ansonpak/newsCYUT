@@ -1,3 +1,18 @@
 {% extends 'main/main.html' %}
 {% block content %}
+{% if latestnewss %}
+<h2>最新消息：</h2>
+<table>
+<tr><th>最新消息標題</th></tr>
+{% for latestnews in latestnewss %} 
+<tr>
+<td>
+<a href={% url 'news:latestnews' latestnews.id %}>{{latestnews.title}}</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p><strong>目前尚未有最新消息。</strong></p>
+{% endif %}
 {% endblock %}
