@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -6,8 +5,8 @@ from django.db import models
 class News(models.Model):
     title = models.CharField(max_length=128)
     content = models.TextField()
-    uploadDate = models.DateTimeField()
-    user = models.ForeignKey(User)
+    uploadDate = models.DateField() 
+
     
     def __str__(self):
-        return self.name
+        return self.title
