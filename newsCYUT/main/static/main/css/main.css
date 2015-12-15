@@ -39,6 +39,8 @@ div#headerRight {
 div#headerRight li {
   list-style: none;
   display: inline-block;
+  border-width: 3px;
+  border-style: double; 
 }
 div#headerRight a {
   color: black;

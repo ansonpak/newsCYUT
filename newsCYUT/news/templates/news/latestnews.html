@@ -4,22 +4,15 @@
 <h1>{{latestnews.title}}</h1>
 {% if latestnews %}
 <table>
-<tr><th>最新消息正文</th></tr>
-{% for latestnews in latestnewss %}
+<tr><th>最新消息正文</th><th>最新消息更新時間</th></tr>
 <tr>
-<td>
+<td style=width:50%;>
 {{latestnews.content}}
 </td>
-</tr>
-{% endfor %}
-<tr><th>最新消息更新時間</th></tr>
-{% for latestnews in latestnewss %}
-<tr>
 <td>
 {{latestnews.uploadDate}}
 </td>
 </tr>
-{% endfor %}
 </table>
 {% else %}
 <p><strong>目前並無最新消息。</strong></p>

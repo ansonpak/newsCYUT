@@ -7,6 +7,10 @@ ul, li {
     width: 720px;   /* 圖片的寬 */
     height: 250px;  /* 圖片的高 + 30 */
     border: 10px solid #ddd;
+    margin-left:150px;
+    margin-right:100px;
+    margin-top:30px;
+    marginbottom:30px;
 }
 .abgne-player {
     width: 720px;   /* 圖片的寬 */
