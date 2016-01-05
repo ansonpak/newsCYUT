@@ -28,3 +28,17 @@ def addLatestnews(request):
     form.save()
     return redirect(reverse('news:news'))
     # Or try this: return news(request) 
+    
+def deleteLatestnews1(request):
+    latestnewss = Latestnews.objects.all().order_by('-uploadDate')
+    context = {'latestnewss':latestnewss}
+    return render(request, 'news/deleteLatestnews1.html', context)
+
+def deleteLatestnews(request, latestnewsID):
+    if request.method!='POST':
+        return news(request)
+    # request.method=='POST':
+    latestnewsToDelete = Latestnews.objects.get(id=latestnewsID)
+    if latestnewsToDelete:
+        latestnewsToDelete.delete()
+    return redirect(reverse('news:deleteLatestnews1'))

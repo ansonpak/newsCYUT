@@ -5,4 +5,6 @@ urlpatterns = [
     url(r'^$', views.news, name='news'),
     url(r'^latestnews/(?P<latestnewsID>[0-9]+)/$', views.latestnews, name='latestnews'),
     url(r'^addLatestnews/$', views.addLatestnews, name='addLatestnews'),
+    url(r'^deleteLatestnews1/$', views.deleteLatestnews1, name='deleteLatestnews1'),
+    url(r'^deleteLatestnews/(?P<latestnewsID>[0-9]+)/$', views.deleteLatestnews, name='deleteLatestnews'),
 ]

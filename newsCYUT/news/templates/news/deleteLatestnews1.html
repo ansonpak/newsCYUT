@@ -3,14 +3,17 @@
 {% if latestnewss %}
 <h2>最新消息：</h2>
 <table>
-<tr><th>最新消息標題</th><th>更新時間</th><th></th><th></th></tr>
+<tr><th>最新消息標題</th><th>刪除</th></tr>
 {% for latestnews in latestnewss %} 
 <tr>
 <td>
 <a href={% url 'news:latestnews' latestnews.id %}>{{latestnews.title}}</a>
 </td>
 <td>
-{{latestnews.uploadDate}}
+<form method=post action={% url 'news:deleteLatestnews' latestnews.id %}>
+ {% csrf_token %}
+ <input type=submit value=刪除>
+ </form>
 </td>
 </tr>
 {% endfor %}
@@ -18,6 +21,4 @@
 {% else %}
 <p><strong>目前尚未有最新消息。</strong></p>
 {% endif %}
-<h2><a href={% url 'news:addLatestnews' %}>新增最新消息</a></h2>
-<h2><a href={% url 'news:deleteLatestnews1' %}>刪除最新消息</a></h2>
 {% endblock %}
