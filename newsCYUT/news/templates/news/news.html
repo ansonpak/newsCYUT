@@ -3,7 +3,7 @@
 {% if latestnewss %}
 <h2>最新消息：</h2>
 <table>
-<tr><th>最新消息標題</th><th>更新時間</th></tr>
+<tr><th>最新消息標題</th><th>更新時間</th><th></th><th></th></tr>
 {% for latestnews in latestnewss %} 
 <tr>
 <td>
@@ -18,4 +18,5 @@
 {% else %}
 <p><strong>目前尚未有最新消息。</strong></p>
 {% endif %}
+<h2><a href={% url 'news:addLatestnews' %}>新增最新消息</a></h2>
 {% endblock %}
