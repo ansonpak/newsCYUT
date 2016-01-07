@@ -1,6 +1,9 @@
 {% extends 'main/main.html' %}
 {% block content %}
+{% load staticfiles %}
+<link rel=stylesheet href={% static 'news/css/news.css' %}>
 {% if latestnewss %}
+<div id=latestnews>
 <h2>最新消息：</h2>
 <table>
 <tr><th>最新消息標題</th><th>更新時間</th><th></th><th></th></tr>
@@ -17,6 +20,12 @@
 </table>
 {% else %}
 <p><strong>目前尚未有最新消息。</strong></p>
+</div>
 {% endif %}
+{% if user.is_authenticated %}
+<div class=button>
+<br>
 <button><a href={% url 'news:addLatestnews' %}>新增最新消息</a></button> <button><a href={% url 'news:deleteLatestnews1' %}>刪除最新消息</a></button>
+</div>
+{% endif %}
 {% endblock %}

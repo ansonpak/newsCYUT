@@ -1,21 +1,33 @@
 {% extends 'main/main.html' %}
 {% block content %}
+{% load staticfiles %}
+<link rel=stylesheet href={% static 'photo/css/album.css' %}>
 {% if album %}
+<div id=content>
     <h1>{{album.albumtitle}}</h1>
     {% if photos %}
         {% for photo in photos %}
+        <div class=album>
             <ul>
                 <li><a href={% url 'photo:photo' photo.id %}><img src={{photo.url}}></a></li>
             </ul>
+        </div>
         {% endfor %}
     {% else %}
         <p><strong>此相簿目前並無相片。</strong></p>
     {% endif %}
+ {% if user.is_authenticated %} 
+ </div>
+    <div class=button>
     <br>
     <button><a href={% url 'photo:addPhoto' album.id %}>新增相片</a></button> <button><a href={% url 'photo:deletePhoto1' %}>刪除/修改相片</a></button>
+    </div>
+ {% endif %}
 {% else %}
     <p>所指定的相簿「{{albumID}}」不存在。</p>
 {% endif %}
+<div class=button>
 <br>
 <button><a href={% url 'photo:photobook' %}>回到相簿</a></button>
+</div>
 {% endblock %}

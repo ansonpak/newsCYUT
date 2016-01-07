@@ -1,5 +1,7 @@
 {% extends 'main/main.html' %}
 {% block content %}
+{% load staticfiles %}
+<link rel=stylesheet href={% static 'photo/css/photo.css' %}>
 {% if photo %}
 	<ul>
 	   <li><img src={{photo.url}}></li>

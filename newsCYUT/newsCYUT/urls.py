@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^about/', include('about.urls', namespace='about')),
     url(r'^news/', include('news.urls', namespace='news')),
     url(r'^photo/', include('photo.urls', namespace='photo')),
+    url(r'^account/', include('account.urls', namespace='account')),
     url(r'^.*', include('main.urls')),
 ]

@@ -20,9 +20,20 @@
   <li><a href={% url 'about:about' %}>關於我們</a></li>
   <li><a href={% url 'photo:photobook' %}>相片</a></li>
   <li><a href={% url 'main:main' %}>回首頁</a></li>
+{% if user.is_authenticated %}
+  <li><a href={% url 'account:userLogout' %}>登出 ({{user.username}})</a></li>
+{% else %}
+  <li><a href={% url 'account:register' %}>註冊</a></li>
+  <li><a href={% url 'account:userLogin' %}>登入</a></li>
+{% endif %}
 </ul>
 </div>
 </header>
+{% if messages %}
+ {% for message in messages %}
+ <p {% if message.tags %} class={{message.tags}} {% endif %}>{{message}}</p>
+ {% endfor %}
+{% endif %}
 {% block content %}
 <link rel=stylesheet href={% static 'main/css/js.css' %}>
 <div id="abgne-block-20110317">

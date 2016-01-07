@@ -1,0 +1,19 @@
+#content{
+    margin-top:20px;
+}
+.photobook li{
+	float:left;
+	list-style:none;
+	width:30%;
+	hegiht:30%;
+	margin-right:5px;
+	margin-left:5px;
+}
+.photobook img{
+	width:100%;
+    height:auto;
+}
+.button{
+	float:right;
+	clear:both;
+}

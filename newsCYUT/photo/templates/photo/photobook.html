@@ -1,14 +1,25 @@
 {% extends 'main/main.html' %}
 {% block content %}
+{% load staticfiles %}
+<link rel=stylesheet href={% static 'photo/css/photobook.css' %}>
 {% if albums %}
+<div id=content>
  <h2>相簿</h2>
  {% for album in albums %}
- <ul>
-    <li><a href={% url 'photo:album' album.id %}><img src={{album.photourl}}><br>{{album.albumtitle}}</a></li>
- </ul>
+<div class=photobook>
+    <ul>
+        <li><a href={% url 'photo:album' album.id %}><img src={{album.photourl}}><br>{{album.albumtitle}}</a></li>
+    </ul>
+</div>
  {% endfor %}
 {% else %}  
     <p><strong>目前尚沒有相簿。</strong></p>
 {% endif %}
-<button><a href={% url 'photo:addAlbum' %}>新增相簿</a></button> <button><a href={% url 'photo:deleteAlbum1' %}>刪除/修改相簿</a></button>
+</div>
+{% if user.is_authenticated %} 
+<div class=button>
+<br>
+    <button><a href={% url 'photo:addAlbum' %}>新增相簿</a></button> <button><a href={% url 'photo:deleteAlbum1' %}>刪除/修改相簿</a></button>
+</div>
+{% endif %}
 {% endblock %}
