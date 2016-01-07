@@ -1,0 +1,30 @@
+{% extends 'main/main.html' %}
+{% block content %}
+{% if albums %}
+<h2>相簿：</h2>
+<table>
+<tr><th>相簿標題</th><th>刪除</th><th>修改</th></tr>
+{% for album in albums %} 
+<tr>
+<td>
+{{album.albumtitle}}
+</td>
+<td>
+<form method=post action={% url 'photo:deleteAlbum' album.id %}>
+ {% csrf_token %}
+ <input type=submit value=刪除>
+ </form>
+</td>
+<td>
+ <form action={% url 'photo:updateAlbum' album.id %}>
+ <input type="submit" value=修改>
+ </form>
+ </td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p><strong>目前尚未有相簿。</strong></p>
+{% endif %}
+<button><a href={% url 'photo:photobook' %}>回到相簿</a></button>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'main/main.html' %}
+{% block content %}
+{% if photos %}
+<h2>相片：</h2>
+<table>
+<tr><th>相片</th><th>刪除</th><th></th></tr>
+{% for photo in photos %} 
+<tr>
+<td>
+<a href={% url 'photo:photo' photo.id %}><img src={{photo.url}}>
+</td>
+<td>
+<form method=post action={% url 'photo:deletePhoto' photo.id %}>
+ {% csrf_token %}
+ <input type=submit value=刪除>
+ </form>
+</td>
+<td>
+ <form action={% url 'photo:updatePhoto' photo.id %}>
+ <input type=submit value=修改>
+ </form>
+ </td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p><strong>目前尚未有相片。</strong></p>
+{% endif %}
+<button><a href={% url 'photo:photobook'%}>回到相簿</a></button>
+{% endblock %}

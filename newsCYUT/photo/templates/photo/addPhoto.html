@@ -1,0 +1,10 @@
+{% extends 'main/main.html' %}
+{% block content %}
+<h1>在"{{album.albumtitle}}"相簿中新增一張相片</h1>
+<form method=post action={% url 'photo:addPhoto' album.id %}>
+{% csrf_token %}
+{{form.as_p}}
+<input type=submit value=送出>
+</form>
+<button><a href={% url 'photo:album' album.id %}>回到相簿</a></button>
+{% endblock %}

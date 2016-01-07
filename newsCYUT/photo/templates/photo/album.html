@@ -1,0 +1,21 @@
+{% extends 'main/main.html' %}
+{% block content %}
+{% if album %}
+    <h1>{{album.albumtitle}}</h1>
+    {% if photos %}
+        {% for photo in photos %}
+            <ul>
+                <li><a href={% url 'photo:photo' photo.id %}><img src={{photo.url}}></a></li>
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p><strong>此相簿目前並無相片。</strong></p>
+    {% endif %}
+    <br>
+    <button><a href={% url 'photo:addPhoto' album.id %}>新增相片</a></button> <button><a href={% url 'photo:deletePhoto1' %}>刪除/修改相片</a></button>
+{% else %}
+    <p>所指定的相簿「{{albumID}}」不存在。</p>
+{% endif %}
+<br>
+<button><a href={% url 'photo:photobook' %}>回到相簿</a></button>
+{% endblock %}

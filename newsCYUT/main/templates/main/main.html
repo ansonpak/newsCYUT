@@ -18,10 +18,9 @@
 <ul>
   <li><a href={% url 'news:news' %}>最新消息</a></li>
   <li><a href={% url 'about:about' %}>關於我們</a></li>
-  <li><a href={% url 'photo:photo' %}>相片</a></li>
+  <li><a href={% url 'photo:photobook' %}>相片</a></li>
   <li><a href={% url 'main:main' %}>回首頁</a></li>
 </ul>
-</div>
 </div>
 </header>
 {% block content %}
@@ -52,7 +51,7 @@
 <div id=latestnews>
 <h2>最新消息：</h2>
 <table>
-<tr><th>最新消息標題</th><th>更新時間</th><th></th><th></th></tr>
+<tr><th>最新消息標題</th><th>更新時間</th></tr>
 {% for latestnews in latestnewss %} 
 <tr>
 <td>
@@ -68,7 +67,7 @@
 <p><strong>目前尚未有最新消息。</strong></p>
 </div>
 {% endif %}
-
+</div>
 {% endblock %}
 {% block js %}
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>

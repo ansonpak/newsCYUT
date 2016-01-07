@@ -42,3 +42,19 @@ def deleteLatestnews(request, latestnewsID):
     if latestnewsToDelete:
         latestnewsToDelete.delete()
     return redirect(reverse('news:deleteLatestnews1'))
+
+def updateLatestnews(request, latestnewsID):
+    template = 'news/updateLatestnews.html'
+    try:
+        latestnews = Latestnews.objects.get(id=latestnewsID)
+    except Latestnews.DoesNotExist:
+        return news(request)
+    if request.method=='GET':
+        form = LatestnewsForm(instance=latestnews)
+        return render(request, template, {'form':form, 'latestnews':latestnews})
+    # request.method=='POST'
+    form = LatestnewsForm(request.POST, instance=latestnews)
+    if not form.is_valid():
+        return render(request, template, {'form':form, 'latestnews':latestnews})
+    form.save()
+    return redirect(reverse('news:news'))

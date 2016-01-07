@@ -1,0 +1,11 @@
+{% extends 'main/main.html' %}
+{% block content %}
+<h1>修改相簿</h1>
+<form method=post action={% url 'photo:updateAlbum' album.id %}>
+ {% csrf_token %}
+ {{form.as_p}}
+ <input type=submit value=送出>
+</form>
+<br>
+<p><a href={% url 'photo:deleteAlbum1' %}>回刪除/修改頁</a></p>
+{% endblock %}

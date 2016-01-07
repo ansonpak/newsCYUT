@@ -1,3 +1,13 @@
 {% extends 'main/main.html' %}
 {% block content %}
+{% if photo %}
+	<ul>
+	   <li><img src={{photo.url}}></li>
+	   <li>{{photo.index}}</li>
+	</ul>
+{% else %}
+    <p><strong>此相簿目前並無相片。</strong></p>
+{% endif %}
+<br>
+<input type="button" value="上一頁" onclick="history.back()">   
 {% endblock %}

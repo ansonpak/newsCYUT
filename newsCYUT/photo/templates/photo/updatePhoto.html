@@ -1,0 +1,12 @@
+{% extends 'main/main.html' %}
+{% block content %}
+<h1>修改相片</h1>
+<form method=post action={% url 'photo:updatePhoto' photo.id %}>
+ {% csrf_token %}
+ {{form.as_p}}
+ <input type=submit value=送出>
+</form>
+<br>
+<p><a href={% url 'photo:album' photo.album.id %}>回「{{photo.album.albumtitle}}」網頁
+</a></p>
+{% endblock %}
