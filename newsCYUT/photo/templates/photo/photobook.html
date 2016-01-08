@@ -16,7 +16,7 @@
     <p><strong>目前尚沒有相簿。</strong></p>
 {% endif %}
 </div>
-{% if admin.is_superuser %} 
+{% if user.is_superuser %} 
 <div class=button>
 <br>
     <button><a href={% url 'photo:addAlbum' %}>新增相簿</a></button> <button><a href={% url 'photo:deleteAlbum1' %}>刪除/修改相簿</a></button>

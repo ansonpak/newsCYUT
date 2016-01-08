@@ -16,7 +16,7 @@
     {% else %}
         <p><strong>此相簿目前並無相片。</strong></p>
     {% endif %}
-{% if admin.is_superuser %} 
+{% if user.is_superuser %} 
  </div>
     <div class=button>
     <br>
