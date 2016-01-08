@@ -23,7 +23,7 @@
 <p>所指定的分類「{{latestnewsID}}」不存在。</p>
 {% endif %}
 <br>
-{% if user.is_authenticated %} 
+{% if admin.is_superuser %} 
 <form action={% url 'news:updateLatestnews' latestnews.id %}>
 <input type="submit" value=修改>
 </form>

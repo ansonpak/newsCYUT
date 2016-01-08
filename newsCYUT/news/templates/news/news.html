@@ -22,7 +22,7 @@
 <p><strong>目前尚未有最新消息。</strong></p>
 </div>
 {% endif %}
-{% if user.is_authenticated %}
+{% if admin.is_superuser %} 
 <div class=button>
 <br>
 <button><a href={% url 'news:addLatestnews' %}>新增最新消息</a></button> <button><a href={% url 'news:deleteLatestnews1' %}>刪除最新消息</a></button>
