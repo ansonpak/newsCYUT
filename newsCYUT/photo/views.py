@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required 
 from photo.models import Album, Photo
 from photo.forms import AlbumForm, PhotoForm
+from main.views import admin_required
 
 
 def photobook(request):
@@ -29,7 +30,7 @@ def photo(request, photoID):
         pass
     return render(request, 'photo/photo.html', context)
 
-@login_required
+@admin_required
 def addAlbum(request):
     template = 'photo/addAlbum.html'
     if request.method=='GET':
@@ -40,7 +41,7 @@ def addAlbum(request):
     form.save()
     return redirect(reverse('photo:photobook'))
 
-@login_required
+@admin_required
 def addPhoto(request, albumID):
     template = 'photo/addPhoto.html'
     try:
@@ -60,13 +61,13 @@ def addPhoto(request, albumID):
     photo.save()
     return redirect(reverse('photo:album', args=(albumID, )))
 
-@login_required
+@admin_required
 def deleteAlbum1(request):
     albums = Album.objects.all().order_by()
     context = {'albums':albums}
     return render(request, 'photo/deleteAlbum1.html', context)
 
-@login_required
+@admin_required
 def deleteAlbum(request, albumID):
     if request.method!='POST':
         return photobook(request)
@@ -75,13 +76,13 @@ def deleteAlbum(request, albumID):
         albumToDelete.delete()
     return redirect(reverse('photo:deleteAlbum1'))
 
-@login_required
+@admin_required
 def deletePhoto1(request):
     photos = Photo.objects.all().order_by()
     context = {'photos':photos}
     return render(request, 'photo/deletePhoto1.html', context)
 
-@login_required
+@admin_required
 def deletePhoto(request, photoID):
     if request.method!='POST':
         return photobook(request)
@@ -93,7 +94,7 @@ def deletePhoto(request, photoID):
         albumID = ''
     return redirect(reverse('photo:album', args=(albumID, )))
 
-@login_required
+@admin_required
 def updateAlbum(request, albumID):
     template = 'photo/updateAlbum.html'
     try:
@@ -110,7 +111,7 @@ def updateAlbum(request, albumID):
     form.save()
     return redirect(reverse('photo:photobook'))
 
-@login_required
+@admin_required
 def updatePhoto(request, photoID):
     template = 'photo/updatePhoto.html'
     try:

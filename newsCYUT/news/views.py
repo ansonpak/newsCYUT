@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required 
 from news.models import Latestnews
 from news.forms import LatestnewsForm
+from main.views import admin_required
 
 def news(request):
     latestnewss = Latestnews.objects.order_by('-uploadDate')
@@ -18,7 +19,7 @@ def latestnews(request, latestnewsID):
         pass
     return render(request, 'news/latestnews.html', context)
 
-@login_required
+@admin_required
 def addLatestnews(request):
     template = 'news/addLatestnews.html'
     if request.method=='GET':
@@ -31,13 +32,13 @@ def addLatestnews(request):
     return redirect(reverse('news:news'))
     # Or try this: return news(request) 
 
-@login_required    
+@admin_required    
 def deleteLatestnews1(request):
     latestnewss = Latestnews.objects.all().order_by('-uploadDate')
     context = {'latestnewss':latestnewss}
     return render(request, 'news/deleteLatestnews1.html', context)
 
-@login_required
+@admin_required
 def deleteLatestnews(request, latestnewsID):
     if request.method!='POST':
         return news(request)
@@ -47,7 +48,7 @@ def deleteLatestnews(request, latestnewsID):
         latestnewsToDelete.delete()
     return redirect(reverse('news:deleteLatestnews1'))
 
-@login_required
+@admin_required
 def updateLatestnews(request, latestnewsID):
     template = 'news/updateLatestnews.html'
     try:
